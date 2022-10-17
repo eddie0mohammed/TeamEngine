@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { ROUTES } from "../App/Constants";
 import { Button, Box, Flex, Header } from "../styled";
 
 const Overview = () => {
@@ -17,7 +18,7 @@ const Overview = () => {
         <Box marginBottom="lg">
           <Button
             data-cy="newEmployeeButton"
-            onClick={() => history.push("/create")}
+            onClick={() => history.push(ROUTES.CREATE_PAGE)}
           >
             Add new employees
           </Button>
@@ -25,7 +26,7 @@ const Overview = () => {
         <Box>
           <Button
             data-cy="viewEmployeesButton"
-            onClick={() => history.push("/view")}
+            onClick={() => history.push(ROUTES.VIEW_PAGE)}
           >
             View all employees
           </Button>

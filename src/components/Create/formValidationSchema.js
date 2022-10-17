@@ -22,7 +22,7 @@ const formValidationSchema = yup.object().shape({
     .trim()
     .max(255, "The maximum number of characters is 255")
     .required("Required"),
-  dateOfBirth: yup
+  birthDate: yup
     .date()
     .max(new Date())
     .typeError("please enter a valid date")

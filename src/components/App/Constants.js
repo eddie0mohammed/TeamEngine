@@ -1,4 +1,10 @@
-// eslint-disable-next-line import/prefer-default-export
+export const ROUTES = {
+  HOME_PAGE: "/",
+  CREATE_PAGE: "/create",
+  EDIT_PAGE: "/edit",
+  VIEW_PAGE: "/view",
+};
+
 export const STATUS = [
   { value: "ACTIVE", name: "ACTIVE" },
   { value: "LEAVE_OF_ABSENCE", name: "LEAVE_OF_ABSENCE" },

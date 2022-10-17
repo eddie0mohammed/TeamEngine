@@ -44,6 +44,7 @@ export default {
     background: "#3F78B1",
     text: "#ffffff",
     secondaryBackground: "#a7a7a7",
+    warning: "#FF9900",
     secondaryText: "#ffffff",
     success: "#8ACC3F",
     danger: "#FF4E4E",

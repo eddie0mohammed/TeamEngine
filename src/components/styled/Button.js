@@ -21,6 +21,7 @@ const Button = styled.button`
   white-space: nowrap;
   :hover {
     opacity: 0.7;
+    cursor: pointer;
   }
 
   ${({ link }) =>
