@@ -5,6 +5,7 @@ import Overview from "../Overview";
 import Create from "../Create";
 import View from "../View";
 import { AppWrapper, GlobalStyle } from "../styled";
+import { ROUTES } from "./Constants";
 
 WebFont.load({
   google: {
@@ -17,10 +18,10 @@ const App = () => {
     <Router>
       <AppWrapper>
         <Switch>
-          <Route path="/create" component={Create} />
-          <Route path="/edit/:employeeId" component={Create} />
-          <Route path="/view" component={View} />
-          <Route path="/" component={Overview} />
+          <Route path={ROUTES.CREATE_PAGE} component={Create} />
+          <Route path={`${ROUTES.EDIT_PAGE}/:employeeId`} component={Create} />
+          <Route path={ROUTES.VIEW_PAGE} component={View} />
+          <Route path={ROUTES.HOME_PAGE} component={Overview} />
         </Switch>
       </AppWrapper>
       <GlobalStyle />

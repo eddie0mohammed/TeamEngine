@@ -1,18 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import EMPLOYEE_MOCK_DATA from "./EMPLOYEE_MOCK_DATA";
 
-// const defaultEmployee = {
-//   id: new Date().getTime(),
-//   firstName: "Abe",
-//   surname: "Simpson",
-//   email: "abe.simpson@springfield.com",
-//   birthDate: "1907-05-25",
-//   jobTitle: "Work grouch",
-//   status: "ACTIVE",
-// };
-
 const initialState = {
-  // employees_records: [defaultEmployee],
   employees_records: EMPLOYEE_MOCK_DATA,
 };
 

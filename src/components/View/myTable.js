@@ -1,32 +1,62 @@
 import React from "react";
-import { StyledTable, THead, TBody, TFoot, TH, TR, TD } from "./styled/table";
+import { Button } from "../styled";
+import Table from "../styled/CustomTable";
 
-const Table = ({ children, ...rest }) => {
-  return <StyledTable {...rest}>{children}</StyledTable>;
-};
+const MyTable = ({
+  displayedRecords,
+  handleEditBtnClick,
+  handleDeleteBtnClick,
+}) => (
+  <Table>
+    <Table.Head>
+      <Table.TR>
+        <Table.TH data-cy="firstName">First Name</Table.TH>
+        <Table.TH data-cy="surname">Surname</Table.TH>
+        <Table.TH width="20" data-cy="email">
+          Email
+        </Table.TH>
+        <Table.TH data-cy="dob">DOB</Table.TH>
+        <Table.TH data-cy="jobTitle">Job Title</Table.TH>
+        <Table.TH data-cy="status">Status</Table.TH>
+        <Table.TH> </Table.TH>
+        <Table.TH> </Table.TH>
+      </Table.TR>
+    </Table.Head>
 
-Table.Head = ({ children, ...rest }) => {
-  return <THead {...rest}>{children}</THead>;
-};
+    <Table.Body>
+      {displayedRecords?.map(
+        ({ id, firstName, surname, email, birthDate, jobTitle, status }) => (
+          <Table.TR key={`${id}-${firstName}`} data-cy="tr">
+            <Table.TD>{firstName}</Table.TD>
+            <Table.TD data-cy="td-surname">{surname}</Table.TD>
+            <Table.TD>{email}</Table.TD>
+            <Table.TD>{birthDate}</Table.TD>
+            <Table.TD>{jobTitle}</Table.TD>
+            <Table.TD boldFont>{status}</Table.TD>
 
-Table.Body = ({ children, ...rest }) => {
-  return <TBody {...rest}>{children}</TBody>;
-};
+            <Table.TD>
+              <Button
+                data-cy="editButton"
+                backgroundColor="warning"
+                onClick={() => handleEditBtnClick(id)}
+              >
+                Edit
+              </Button>
+            </Table.TD>
+            <Table.TD>
+              <Button
+                data-cy="deleteButton"
+                backgroundColor="danger"
+                onClick={() => handleDeleteBtnClick(id)}
+              >
+                Delete
+              </Button>
+            </Table.TD>
+          </Table.TR>
+        )
+      )}
+    </Table.Body>
+  </Table>
+);
 
-Table.Foot = ({ children, ...rest }) => {
-  return <TFoot {...rest}>{children}</TFoot>;
-};
-
-Table.TH = ({ children, ...rest }) => {
-  return <TH {...rest}>{children}</TH>;
-};
-
-Table.TR = ({ children, ...rest }) => {
-  return <TR {...rest}>{children}</TR>;
-};
-
-Table.TD = ({ children, ...rest }) => {
-  return <TD {...rest}>{children}</TD>;
-};
-
-export default Table;
+export default MyTable;
