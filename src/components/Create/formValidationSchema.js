@@ -24,7 +24,7 @@ const formValidationSchema = yup.object().shape({
     .required("Required"),
   birthDate: yup
     .date()
-    .max(new Date())
+    .max(new Date().toISOString().split("T")[0])
     .typeError("please enter a valid date")
     .required("Date of Birth is required"),
   status: yup.string().required("Required"),

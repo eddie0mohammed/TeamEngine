@@ -57,7 +57,6 @@ describe("Examine the creation of employees", () => {
     );
   });
 
-  // validate date
   it("validates the date input field properly", () => {
     cy.get("[data-cy=birthDateInput]").type("1990-01-01");
     cy.get("[data-cy=birthDateInput]").should("have.value", "1990-01-01");
@@ -68,15 +67,14 @@ describe("Examine the creation of employees", () => {
     const nextYearsDate = updatedDateArr.join("-");
 
     cy.get("[data-cy=birthDateInput]").type(nextYearsDate).blur();
-
-    // // expect error message
-    // cy.get("[data-cy=birthDateErrorMessage]").should(
-    //   "contain",
-    //   `birthDate field must be at earlier than ${new Date()}`
-    // );
+    cy.get("[data-cy=birthDateErrorMessage]").should(
+      "contain",
+      `birthDate field must be at earlier than ${
+        new Date().toISOString().split("T")[0]
+      }`
+    );
   });
 
-  // validate select
   it("validates the select field properly", () => {
     cy.get("[data-cy=statusInput]")
       .select("ACTIVE")
@@ -94,17 +92,34 @@ describe("Examine the creation of employees", () => {
       .should("eq", "TERMINATED");
   });
 
-  // validate a fully-completed form
   it("validates the fully filled form properly", () => {
-    cy.get("[data-cy=firstNameInput]").type("testFirstName");
-    cy.get("[data-cy=surnameInput]").type("testSurname");
+    cy.get("[data-cy=firstNameInput]").type("testFirstNametest");
+    cy.get("[data-cy=surnameInput]").type("testSurnametest");
     cy.get("[data-cy=emailInput]").type("test@test.com");
     cy.get("[data-cy=jobTitleInput]").type("tester");
     cy.get("[data-cy=birthDateInput]").type("1990-01-01");
     cy.get("[data-cy=statusInput]").select("ACTIVE");
     cy.get("[data-cy=saveButton]").click();
 
-    // expect redirection to homepage
     cy.url().should("eq", "http://localhost:3000/#/");
+
+    cy.get("[data-cy=viewEmployeesButton]").click();
+    cy.url().should("eq", "http://localhost:3000/#/view");
+
+    cy.get("[data-cy=tr]").should($el => {
+      expect($el).to.have.length(101);
+    });
+
+    cy.get("[data-cy=tr]")
+      .contains("testFirstNametest")
+      .should($el => {
+        expect($el).to.have.length(1);
+      });
+
+    cy.get("[data-cy=tr]")
+      .contains("testSurnametest")
+      .should($el => {
+        expect($el).to.have.length(1);
+      });
   });
 });

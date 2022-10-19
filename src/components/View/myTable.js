@@ -27,12 +27,14 @@ const MyTable = ({
       {displayedRecords?.map(
         ({ id, firstName, surname, email, birthDate, jobTitle, status }) => (
           <Table.TR key={`${id}-${firstName}`} data-cy="tr">
-            <Table.TD>{firstName}</Table.TD>
+            <Table.TD data-cy="td-firstName">{firstName}</Table.TD>
             <Table.TD data-cy="td-surname">{surname}</Table.TD>
-            <Table.TD>{email}</Table.TD>
-            <Table.TD>{birthDate}</Table.TD>
-            <Table.TD>{jobTitle}</Table.TD>
-            <Table.TD boldFont>{status}</Table.TD>
+            <Table.TD data-cy="td-email">{email}</Table.TD>
+            <Table.TD data-cy="td-birthDate">{birthDate}</Table.TD>
+            <Table.TD data-cy="td-jobTitle">{jobTitle}</Table.TD>
+            <Table.TD data-cy="td-status" boldFont>
+              {status}
+            </Table.TD>
 
             <Table.TD>
               <Button
