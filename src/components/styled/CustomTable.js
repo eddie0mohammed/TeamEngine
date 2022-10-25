@@ -7,7 +7,7 @@ import {
   TH,
   TR,
   TD,
-} from "../View/styled/Table";
+} from "../View/styled/table";
 
 const Table = ({ children, ...rest }) => {
   return <StyledTable {...rest}>{children}</StyledTable>;

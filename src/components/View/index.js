@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Header } from "../styled";
 import { getEmployeesRecords } from "../../redux/employees/selectors";
 import { removeEmployee } from "../../redux/employees";
-import MyTable from "./MyTable";
+import MyTable from "./myTable";
 import TextField from "../Create/styled/TextField";
-import TopSection from "./styled/TopSection";
-import TableContainer from "./styled/TableContainer";
+import TopSection from "./styled/topSection";
+import TableContainer from "./styled/tableContainer";
 import { DEBOUNCED_DELAY, ROUTES } from "../App/Constants";
 import useDebounce from "../../hooks/useDebounce";
 
